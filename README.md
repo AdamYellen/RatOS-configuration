@@ -42,13 +42,9 @@ This is a fork of [RatOS-Configuration repo](https://github.com/Rat-OS/RatOS-con
 - Modify the mcu setting at the bottom of `printer-<name>.cfg`
   - Hint: `ls /dev/serial/by-id/`
 - Install [klipper_z_calibration](https://github.com/protoloft/klipper_z_calibration)
-- Install [Klicky Probe](https://github.com/jlas1/Klicky-Probe/tree/main/Klipper_macros) macros in a specific sub-directory:
+- Install [Klicky Probe](https://github.com/jlas1/Klicky-Probe) macros in a specific sub-directory:
   - ```shell
-     mkdir klicky
-     cd klicky
-     wget https://raw.githubusercontent.com/jlas1/Klicky-Probe/main/Klipper_macros/Klipper_macros.zip
-     unzip Klipper_macros.zip
-     cd ..
+     git clone https://github.com/AdamYellen/Klicky-Probe-macros.git klicky-probe
 - Modify the klipper args to reference the new printer name and restart Klipper
   - There are two ways to edit this reference based on how Klipper was installed
     - Edit the KLIPPY_ARGS line in /etc/defaults/klipper:
