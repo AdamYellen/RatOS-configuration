@@ -74,3 +74,8 @@ This is a fork of [RatOS-Configuration repo](https://github.com/Rat-OS/RatOS-con
 - Add `TEXTUREDPLATE=true` to your slicer's PRINT_START command and adjust `variable_textured_plate_offset` in the config file
   - This is an additional Z-offset that will be applied after Z-probing
 - Enable or disable the motors off variable (`variable_end_print_motors_off`) in the config file to control that behavior
+  - Defaults to True
+
+## Example
+
+See [my printer repo](https://github.com/AdamYellen/Klipper-config) for more details
