@@ -1,22 +1,25 @@
 # Introduction
 
-This is a fork of [RatOS-Configuration repo](https://github.com/Rat-OS/RatOS-configuration) that adds support for the [Voron Trident](https://vorondesign.com/voron_trident).
+This is a fork of [RatOS-Configuration repo](https://github.com/Rat-OS/RatOS-configuration) that adds support for Voron printers. Currently, only the [Voron Trident](https://vorondesign.com/voron_trident) is supported.
 
 ## Features
 
-- Support for the Voron Trident (currently only 250)
-- Adds two new variables:
+- Support for my specific Voron Trident 250 (see [Assumptions](#assumptions) below)
+- Adds two new variables (see [New Variables](#new-variables) below):
   - Optional "motors off" at print end
   - Support for textured plates in the print start command to apply a configurable Z-offset
+- Modified the Z-calibration sequence to work with [Protoloft's auto Z-calibration](https://github.com/protoloft/klipper_z_calibration)
+- This repo can be used across multiple printers without any modifications
+  - Instead of using the default printer.cfg file you can have printer-<name1..n>.cfg (see Install section)
 
 ## Assumptions
 
-- This repo can be used across multiple printers without any modifications needed
 - Choice of Klicky as the z-probe
   - The included template might be compatible with other z-probes, but is untested (PRs welcome)
-- RatOS itself is not used, only the configuration setup
+- Mainsail OS or FluiddPi as the base install
+  - RatOS itself is not used, only the configuration files
   - RatOS might work, but is untested
-- LDO 42STH48-2504AC A & B motors
+- [LDO 42STH48-2504AC](https://www.3dlabtech.ca/product/ldo-nema17-motor-ldo-42sth48-2504ac/) A & B motors
   - BOM calls for LDO 42STH40-2004MAH (PRs welcome)
 - Fysetc Spider v1.1 controller
   - Other MCUs haven't been tested (PRs welcome)
@@ -45,7 +48,7 @@ This is a fork of [RatOS-Configuration repo](https://github.com/Rat-OS/RatOS-con
 - Install [Klicky Probe](https://github.com/jlas1/Klicky-Probe) macros in a specific sub-directory:
   - ```shell
      git clone https://github.com/AdamYellen/Klicky-Probe-macros.git klicky-probe
-- Modify the klipper args to reference the new printer name and restart Klipper
+- Modify the klipper args to reference the named printer config file and restart Klipper
   - There are two ways to edit this reference based on how Klipper was installed
     - Edit the KLIPPY_ARGS line in /etc/defaults/klipper:
     - ```shell
