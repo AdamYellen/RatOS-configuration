@@ -25,10 +25,11 @@ install_udev_rules()
     report_status "Installing udev rules"
     sudo ln -s /home/pi/klipper_config/config/boards/*/*.rules /etc/udev/rules.d/
 }
-compile_binaries()
+
+fix_printer_data()
 {
-    report_status "Compiling firmware binaries"
-    sudo /home/pi/klipper_config/config/scripts/compile-binaries.sh
+    report_status "Fixing printer data"
+    /home/pi/klipper_config/config/scripts/delete-and-restore-printer-data.sh
 }
 
 verify_ready()
@@ -44,8 +45,8 @@ set -e
 
 verify_ready
 install_printer_config
+fix_printer_data
 install_udev_rules
 install_hooks
 install_dependencies
 ensure_sudo_command_whitelisting
-compile_binaries
